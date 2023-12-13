@@ -1,6 +1,6 @@
 package demo.pubstatemachine.event;
 
-public enum EventType {
+public enum  MessageType {
     COMMAND_GRAPHIC_EDIT,
     COMMAND_COPY_EDIT,
     COMMAND_PUBLISH,

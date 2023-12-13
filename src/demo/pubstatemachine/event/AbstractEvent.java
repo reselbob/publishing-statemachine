@@ -3,14 +3,14 @@ package demo.pubstatemachine.event;
 import demo.pubstatemachine.Document;
 
 public class AbstractEvent{
-    private final EventType eventType;
+    private final MessageType messageType;
     private final Document document;
 
-    public AbstractEvent(EventType eventType, Document document) {
-        this.eventType = eventType;
+    public AbstractEvent(MessageType messageType, Document document) {
+        this.messageType = messageType;
         this.document = document;
     }
-    public EventType getEventType() { return eventType;}
+    public MessageType getEventType() { return messageType;}
     public Document getDocument() { return document;}
 
 

@@ -27,7 +27,7 @@ public class Main {
 
             AbstractState.current.enter();
             Event event = new
-                    Event(EventType.EVENT_EDITABLE, document);
+                    Event(MessageType.EVENT_EDITABLE, document);
             AbstractState.current.update(event);
         }
     }

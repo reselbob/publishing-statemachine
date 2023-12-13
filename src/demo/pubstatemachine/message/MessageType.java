@@ -1,4 +1,4 @@
-package demo.pubstatemachine.event;
+package demo.pubstatemachine.message;
 
 public enum  MessageType {
     COMMAND_GRAPHIC_EDIT,
@@ -8,9 +8,10 @@ public enum  MessageType {
     COMMAND_AWAIT_PUBLISH,
 
     EVENT_EDITABLE,
-    EVENT_GRAPHIC_EDIT,
-    EVENT_COPY_EDIT,
-    EVENT_PUBLISH,
-    EVENT_AWAIT_EDIT,
+    EVENT_GRAPHIC_EDITABLE,
+    EVENT_COPY_EDITABLE,
+    EVENT_PUBLISHABLE,
+    EVENT_AWAIT_COPY_EDIT,
+    EVENT_AWAIT_GRAPHIC_EDIT,
     EVENT_AWAIT_PUBLISH;
 }

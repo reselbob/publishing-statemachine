@@ -1,7 +1,6 @@
 package demo.pubstatemachine;
 
-import demo.pubstatemachine.event.AbstractEvent;
-import demo.pubstatemachine.event.*;
+import demo.pubstatemachine.message.*;
 import demo.pubstatemachine.queue.SimpleMessageQueue;
 import demo.pubstatemachine.state.*;
 
@@ -10,7 +9,10 @@ import java.net.URL;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException, MalformedURLException {
+
+
         SimpleMessageQueue queue = new SimpleMessageQueue();
+
 
         AbstractState.editable = new Editable(queue);
         AbstractState.graphicEdit = new GraphicEdit(queue);
@@ -26,9 +28,9 @@ public class Main {
         while(true){
 
             AbstractState.current.enter();
-            Event event = new
-                    Event(MessageType.EVENT_EDITABLE, document);
-            AbstractState.current.update(event);
+            AbstractMessage message = new
+                    MessageImpl(MessageType.EVENT_EDITABLE, document);
+            AbstractState.current.update(message);
         }
     }
 }

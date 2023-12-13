@@ -1,12 +1,12 @@
-package demo.pubstatemachine.event;
+package demo.pubstatemachine.message;
 
 import demo.pubstatemachine.Document;
 
-public class AbstractEvent{
+public abstract class AbstractMessage{
     private final MessageType messageType;
     private final Document document;
 
-    public AbstractEvent(MessageType messageType, Document document) {
+    public AbstractMessage(MessageType messageType, Document document) {
         this.messageType = messageType;
         this.document = document;
     }

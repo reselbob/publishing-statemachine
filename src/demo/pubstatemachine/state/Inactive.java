@@ -3,17 +3,16 @@ package demo.pubstatemachine.state;
 import demo.pubstatemachine.message.AbstractMessage;
 import demo.pubstatemachine.queue.SimpleMessageQueue;
 
-public class AwaitingPublish extends AbstractState{
-    public AwaitingPublish(SimpleMessageQueue queue) {
+public class Inactive extends AbstractState{
+    public Inactive(SimpleMessageQueue queue) {
         super(queue);
     }
 
     public void enter(){
-        System.out.println("Now in the AwaitingPublish state");
+        System.out.println("Now in the Inactive state");
     }
 
     public void update(AbstractMessage message){
-
-        System.out.println(message.getEventType());;
+        System.out.println(message.getEventType());
     }
 }

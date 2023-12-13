@@ -1,15 +1,20 @@
 package demo.pubstatemachine.queue;
-import demo.pubstatemachine.event.AbstractEvent;
+import demo.pubstatemachine.message.AbstractMessage;
+
 import java.util.concurrent.LinkedBlockingQueue;
 public class SimpleMessageQueue {
 
-    private final LinkedBlockingQueue<AbstractEvent> queue = new LinkedBlockingQueue<>();
+    private final LinkedBlockingQueue<AbstractMessage> queue;
 
-    public void putMessage(AbstractEvent message) {
+    public SimpleMessageQueue() {
+        this.queue = new LinkedBlockingQueue<>();
+    }
+
+    public void putMessage(AbstractMessage message) {
         queue.offer(message);
     }
 
-    public AbstractEvent getMessage() throws InterruptedException {
+    public AbstractMessage getMessage() throws InterruptedException {
         return queue.take();
     }
 }

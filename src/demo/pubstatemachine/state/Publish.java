@@ -1,6 +1,6 @@
 package demo.pubstatemachine.state;
 
-import demo.pubstatemachine.event.AbstractEvent;
+import demo.pubstatemachine.message.AbstractMessage;
 import demo.pubstatemachine.queue.SimpleMessageQueue;
 
 public class Publish extends AbstractState{
@@ -12,7 +12,7 @@ public class Publish extends AbstractState{
         System.out.println("Now in the Publish state");
     }
 
-    public void update(AbstractEvent event){
-        System.out.println(event.getEventType());
+    public void update(AbstractMessage message){
+        System.out.println(message.getEventType());
     }
 }

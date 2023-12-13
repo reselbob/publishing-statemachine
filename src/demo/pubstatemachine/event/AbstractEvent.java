@@ -1,12 +1,17 @@
 package demo.pubstatemachine.event;
-public class AbstractEvent{
-    private final String name;
-    private final String code;
 
-    public AbstractEvent(String name, String code) {
-        this.name = name;
-        this.code = code;
+import demo.pubstatemachine.Document;
+
+public class AbstractEvent{
+    private final EventType eventType;
+    private final Document document;
+
+    public AbstractEvent(EventType eventType, Document document) {
+        this.eventType = eventType;
+        this.document = document;
     }
-    public String getCode() { return code;}
-    public String getName() { return name;}
+    public EventType getEventType() { return eventType;}
+    public Document getDocument() { return document;}
+
+
 }

@@ -1,0 +1,16 @@
+package demo.pubstatemachine.event;
+
+public enum EventType {
+    COMMAND_GRAPHIC_EDIT,
+    COMMAND_COPY_EDIT,
+    COMMAND_PUBLISH,
+    COMMAND_AWAIT_EDIT,
+    COMMAND_AWAIT_PUBLISH,
+
+    EVENT_EDITABLE,
+    EVENT_GRAPHIC_EDIT,
+    EVENT_COPY_EDIT,
+    EVENT_PUBLISH,
+    EVENT_AWAIT_EDIT,
+    EVENT_AWAIT_PUBLISH;
+}

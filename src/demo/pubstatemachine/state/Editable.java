@@ -3,8 +3,6 @@ package demo.pubstatemachine.state;
 import demo.pubstatemachine.event.AbstractEvent;
 import demo.pubstatemachine.queue.SimpleMessageQueue;
 
-import java.util.Scanner;
-
 public class Editable extends AbstractState {
     public Editable(SimpleMessageQueue queue) {
         super(queue);

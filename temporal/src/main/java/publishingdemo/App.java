@@ -81,7 +81,7 @@ public class App {
         Worker worker = factory.newWorker(TASK_QUEUE);
 
         // Workflows are stateful. So you need a type to create instances.
-        worker.registerWorkflowImplementationTypes(ShoppingCartWorkflowImpl.class);
+        worker.registerWorkflowImplementationTypes(PublishingWorkflowImpl.class);
 
         // Start the worker created by this factory.
         factory.start();

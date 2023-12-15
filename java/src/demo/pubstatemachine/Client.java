@@ -17,9 +17,5 @@ public class Client {
 
         controller.sendMessage(message);
         System.out.println("Client: Sent event to controller: " + message.getMessageType());
-
-        //event = new AbstractEvent(MessageType.COMMAND_GRAPHIC_EDIT, document);
-        //controller.sendMessage(event);
-        //System.out.println("Client: Sent event to controller: " + event.getEventType());
     }
 }

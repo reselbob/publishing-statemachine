@@ -17,14 +17,18 @@ public class GraphicEdit extends AbstractState {
     }
 
     public void update(AbstractMessage message) throws InterruptedException {
-        System.out.println(AbstractState.current.getClass().getSimpleName() + " is now updating " + message.getEventType());
+        System.out.println(AbstractState.current.getClass().getSimpleName() + " is now updating " + message.getMessageType());
         Document document = message.getDocument();
         Thread.sleep(1000);
-        queue.putMessage(new MessageImpl(MessageType.COMMAND_AWAIT_EDIT, document));
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
         if(sm == null) {
             throw new NullPointerException(String.format("No State Monitor found in %s for update()",this.getClass().getSimpleName()));
         }
-        sm.setGraphicEdited(true);
+        if(!sm.isGraphicEdited()){
+            sm.setGraphicEdited(true);
+            queue.putMessage(new MessageImpl(MessageType.EVENT_AWAIT_COPY_EDIT, document));
+        }
+
+
     }
 }

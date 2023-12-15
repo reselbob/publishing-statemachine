@@ -26,38 +26,32 @@ public class Controller {
             while (true) {
                 try {
                     AbstractMessage msg = queue.getMessage();
-                    System.out.println("Controller received message: " + msg.getEventType());
-                    switch (msg.getEventType()) {
+                    System.out.println("Controller received message: " + msg.getMessageType());
+                    switch (msg.getMessageType()) {
                         case EVENT_EDITABLE:
                             processEventEditable(msg);
                             break;
                         case EVENT_AWAIT_GRAPHIC_EDIT:
-                            AbstractState.current = AbstractState.awaitingEdits;
-                            AbstractState.current.enter();
-                            break;
                         case EVENT_AWAIT_COPY_EDIT:
-                            AbstractState.current = AbstractState.awaitingEdits;
-                            AbstractState.current.enter();
+                            processEventAwaitEdits(msg);
+                            break;
+                        case EVENT_PUBLISHABLE:
+                            processEventPublishable(msg);
+                            break;
+                        case EVENT_PUBLISHED:
+                            System.out.println("Document published");
                             break;
                         case COMMAND_GRAPHIC_EDIT:
                             processCommandGraphicEdit(msg);
                             break;
                         case COMMAND_COPY_EDIT:
-                            AbstractState.current = AbstractState.copyEdit;
-                            AbstractState.current.enter();
+                            processCommandCopyEdit(msg);
                             break;
                         case COMMAND_PUBLISH:
-                            AbstractState.current = AbstractState.publish;
-                            AbstractState.current.enter();
+                            processCommandPublish(msg);
                             break;
-                        case COMMAND_AWAIT_EDIT:
-                            AbstractState.current = AbstractState.awaitingEdits;
-                            AbstractState.current.enter();
-                            break;
-                        case COMMAND_AWAIT_PUBLISH:
-                            AbstractState.current = AbstractState.awaitingPublish;
-                            AbstractState.current.enter();
-                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + msg.getMessageType());
                     }
                 } catch (InterruptedException e) {
                     System.err.println("Polling interrupted: " + e.getMessage());
@@ -76,6 +70,16 @@ public class Controller {
 
     }
 
+
+    private static void processEventPublishable(AbstractMessage message) throws InterruptedException {
+        AbstractState.current = AbstractState.awaitingEdits;
+        AbstractState.current.enter();
+        StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
+        if(sm == null){
+            throw new NullPointerException("StateMonitor not found in processEventPublishable");
+        }
+        AbstractState.current.update(message);
+    }
     private static void processEventEditable(AbstractMessage message) throws InterruptedException {
         AbstractState.current = AbstractState.editable;
         AbstractState.current.enter();
@@ -103,13 +107,13 @@ public class Controller {
     }
 
     private static void processCommandCopyEdit(AbstractMessage message) throws InterruptedException {
-        AbstractState.current = AbstractState.graphicEdit;
+        AbstractState.current = AbstractState.copyEdit;
         AbstractState.current.enter();
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
         if(sm == null){
             throw new NullPointerException("StateMonitor not found in processCommandGraphicEdit");
         }
-        if(!sm.isGraphicEdited()){
+        if(!sm.isCopyEdited()){
             AbstractState.current.update(message);
         }
     }
@@ -121,14 +125,22 @@ public class Controller {
         if(sm == null){
             throw new NullPointerException("StateMonitor not found in processEventAwaitEdits");
         }
-        if(!sm.isGraphicEdited()){
-            AbstractState.current.update(message);
+        AbstractState.current.update(message);
+    }
+
+    private static void processCommandPublish(AbstractMessage message) throws InterruptedException {
+        AbstractState.current = AbstractState.publish;
+        AbstractState.current.enter();
+        StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
+        if(sm == null){
+            throw new NullPointerException("StateMonitor not found in processEventAwaitEdits");
         }
+        AbstractState.current.update(message);
     }
 
 
     public void sendMessage(AbstractMessage message) {
-        System.out.println("Sending message: " + message.getEventType());
+        System.out.println("Sending message: " + message.getMessageType());
         queue.putMessage(message);
     }
 }

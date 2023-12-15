@@ -18,7 +18,7 @@ public class Editable extends AbstractState {
 
     @Override
     public void update(AbstractMessage message) throws InterruptedException {
-        System.out.println(AbstractState.current.getClass().getSimpleName() + " is now updating " + message.getEventType());
+        System.out.println(AbstractState.current.getClass().getSimpleName() + " is now updating " + message.getMessageType());
         Document document = message.getDocument();
         Thread.sleep(1000);
         queue.putMessage(new MessageImpl(MessageType.COMMAND_GRAPHIC_EDIT, document));

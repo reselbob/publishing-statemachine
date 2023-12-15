@@ -10,7 +10,7 @@ public abstract class AbstractMessage{
         this.messageType = messageType;
         this.document = document;
     }
-    public MessageType getEventType() { return messageType;}
+    public MessageType getMessageType() { return messageType;}
     public Document getDocument() { return document;}
 
 

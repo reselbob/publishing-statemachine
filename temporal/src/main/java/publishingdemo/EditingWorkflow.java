@@ -7,14 +7,14 @@ import publishingdemo.model.Document;
 @WorkflowInterface
 public interface EditingWorkflow {
     @WorkflowMethod
-    void startWorkflow(Document document) throws InterruptedException;
+    void startWorkflow(Document document);
 
-    @SignalMethod
+    @WorkflowMethod
     void copyEdit(Document document) throws InterruptedException;
 
-    @SignalMethod
+    @WorkflowMethod
     void graphicEdit(Document document) throws InterruptedException;
 
-    @SignalMethod
+    @WorkflowMethod
     void exit();
 }

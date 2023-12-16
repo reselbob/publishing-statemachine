@@ -24,7 +24,7 @@ public class EditingWorkflowImpl implements EditingWorkflow{
      * @throws InterruptedException
      */
     @Override
-    public void startWorkflow(Document document) throws InterruptedException{
+    public void startWorkflow(Document document) {
         logger.info("Starting Workflow for Edit child workflow for Publishing use case for document: " + document.getUrl());
         List<Promise<Void>> promises = new ArrayList<>();
         promises.add(

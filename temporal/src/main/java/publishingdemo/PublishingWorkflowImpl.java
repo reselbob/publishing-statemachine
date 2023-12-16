@@ -19,7 +19,7 @@ public class PublishingWorkflowImpl implements PublishingWorkflow {
     }
 
     @Override
-    public void edit(Document document) throws InterruptedException {
+    public void edit(Document document) {
         logger.info("I am editing the document at URL: " + document.getUrl() + " in the main workflow");
         ChildWorkflowOptions childOptions =
                 ChildWorkflowOptions.newBuilder()
@@ -31,9 +31,9 @@ public class PublishingWorkflowImpl implements PublishingWorkflow {
     }
 
     @Override
-    public void publish(Document document) throws InterruptedException {
+    public void publish(Document document) {
         logger.info("I am publishing: " + document.getUrl() + " in the main workflow");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
     }
     /** This is convenience signal to shut down the workflow */
     @Override

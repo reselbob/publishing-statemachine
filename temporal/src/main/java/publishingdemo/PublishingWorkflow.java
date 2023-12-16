@@ -12,10 +12,10 @@ public interface PublishingWorkflow {
     void startWorkflow();
 
     @SignalMethod
-    void edit(Document document) throws InterruptedException;
+    void edit(Document document);
 
     @SignalMethod
-    void publish(Document document) throws InterruptedException;
+    void publish(Document document);
 
     @SignalMethod
     void exit();

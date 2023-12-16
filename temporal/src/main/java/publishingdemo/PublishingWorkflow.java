@@ -10,12 +10,12 @@ public interface PublishingWorkflow {
   @WorkflowMethod
   void startWorkflow();
 
-  @SignalMethod
+  @WorkflowMethod
   void edit(Document document);
 
-  @SignalMethod
+  @WorkflowMethod
   void publish(Document document);
 
-  @SignalMethod
+  @WorkflowMethod
   void exit();
 }

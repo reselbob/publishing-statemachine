@@ -6,19 +6,16 @@ import io.temporal.workflow.WorkflowInterface;
 import io.temporal.workflow.WorkflowMethod;
 import publishingdemo.model.Document;
 
-import java.util.List;
-
-
 @WorkflowInterface
 public interface PublishingWorkflow {
     @WorkflowMethod
     void startWorkflow();
 
     @SignalMethod
-    void edit(Document document);
+    void edit(Document document) throws InterruptedException;
 
     @SignalMethod
-    void publish(Document document);
+    void publish(Document document) throws InterruptedException;
 
     @SignalMethod
     void exit();

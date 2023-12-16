@@ -7,7 +7,6 @@ import io.temporal.common.RetryOptions;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
-import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -15,17 +14,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import publishingdemo.model.Document;
 
-import javax.print.Doc;
 
 public class App {
-    static final String TASK_QUEUE = "BarryPeanutsTemporal";
+    static final String TASK_QUEUE = "PublishingDemo";
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     @SuppressWarnings("CatchAndPrintStackTrace")
-    public static void main(String[] args) throws MalformedURLException {
-        // gRPC stubs wrapper that talks to the local docker instance of temporal
-        // service.
+    public static void main(String[] args) throws MalformedURLException, InterruptedException {
         WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
         // client that can be used to start and signal workflows
         WorkflowClient client = WorkflowClient.newInstance(service);
@@ -34,7 +30,7 @@ public class App {
         WorkerFactory factory = startWorkerWithFactory(client);
 
         // Declare the WORKFLOW_ID
-        String WORKFLOW_ID = TASK_QUEUE + "-" + "01";
+        String WORKFLOW_ID = TASK_QUEUE + "-" + "02";
 
         // now we can start running instances of our workflow - its state will be persisted
         WorkflowOptions options =
@@ -57,6 +53,8 @@ public class App {
 
             WorkflowClient.start(wf::startWorkflow);
 
+            wf.edit(document);
+            wf.publish(document);
 
             wf.exit();
 

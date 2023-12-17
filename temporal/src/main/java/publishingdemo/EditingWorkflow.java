@@ -8,14 +8,11 @@ import publishingdemo.model.Document;
 @WorkflowInterface
 public interface EditingWorkflow {
   @WorkflowMethod
-  void startChildWorkflow(Document document);
+  Document editDocument(Document document);
+  
+  @SignalMethod
+  void notifyCopyEditDone(Document document);
 
   @SignalMethod
-  void copyEdit(Document document);
-
-  @SignalMethod
-  void graphicEdit(Document document);
-
-  @SignalMethod
-  void exit();
+  void notifyGraphicEditDone(Document document);
 }

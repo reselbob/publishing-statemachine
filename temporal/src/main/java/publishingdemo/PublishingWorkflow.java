@@ -8,14 +8,5 @@ import publishingdemo.model.Document;
 @WorkflowInterface
 public interface PublishingWorkflow {
   @WorkflowMethod
-  void startWorkflow();
-
-  @SignalMethod
-  void edit(Document document);
-
-  @SignalMethod
   void publish(Document document);
-
-  @SignalMethod
-  void exit();
 }

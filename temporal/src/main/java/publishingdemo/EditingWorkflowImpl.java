@@ -4,8 +4,6 @@ import io.temporal.workflow.Async;
 import io.temporal.workflow.Promise;
 import io.temporal.workflow.Workflow;
 import io.temporal.workflow.WorkflowQueue;
-import java.util.ArrayList;
-import java.util.List;
 import org.slf4j.Logger;
 import publishingdemo.model.Document;
 
@@ -26,25 +24,26 @@ public class EditingWorkflowImpl implements EditingWorkflow {
     logger.info(
         "Starting Workflow for Edit child workflow for Publishing use case for document: "
             + document.getUrl());
-      Promise<Void> copyEdit = Async.procedure(()->copyEdit(document));
-      Promise<Void> graphicEdit = Async.procedure(()->graphicEdit(document));
-      copyEdit.get();
-      graphicEdit.get();
+    Promise<Void> copyEdit = Async.procedure(() -> copyEdit(document));
+    Promise<Void> graphicEdit = Async.procedure(() -> graphicEdit(document));
+    copyEdit.get();
+    graphicEdit.get();
 
     Workflow.await(() -> exit);
   }
 
   @Override
-  public void copyEdit(Document document){
+  public void copyEdit(Document document) {
     logger.info("I am copy editing the document: " + document.getUrl() + " in the child workflow");
   }
 
   @Override
-  public void graphicEdit(Document document)  {
-    logger.info("I am graphic editing the document: " + document.getUrl() + " in the child workflow");
+  public void graphicEdit(Document document) {
+    logger.info(
+        "I am graphic editing the document: " + document.getUrl() + " in the child workflow");
   }
 
- // @Override
+  // @Override
   public void exit() {
     logger.info("Exiting the editing process");
     exit = true;

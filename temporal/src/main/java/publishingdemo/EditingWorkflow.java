@@ -16,7 +16,6 @@ public interface EditingWorkflow {
   @SignalMethod
   void graphicEdit(Document document);
 
-
   @SignalMethod
   void exit();
 }

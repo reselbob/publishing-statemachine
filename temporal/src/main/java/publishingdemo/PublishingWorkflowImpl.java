@@ -6,9 +6,6 @@ import io.temporal.workflow.*;
 import org.slf4j.Logger;
 import publishingdemo.model.Document;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PublishingWorkflowImpl implements PublishingWorkflow {
   private static final Logger logger = Workflow.getLogger(PublishingWorkflowImpl.class);
   private final WorkflowQueue<Runnable> queue = Workflow.newWorkflowQueue(1024);
@@ -25,13 +22,13 @@ public class PublishingWorkflowImpl implements PublishingWorkflow {
     logger.info("I am editing the document at URL: " + document.getUrl() + " in the main workflow");
 
     ChildWorkflowOptions childOptions =
-            ChildWorkflowOptions.newBuilder()
-                    .setTaskQueue("child-workflow-task-queue")
-                    .setWorkflowId("child-workflow-task-queue-01")
-                    .setParentClosePolicy(ParentClosePolicy.PARENT_CLOSE_POLICY_ABANDON)
-                    .build();
+        ChildWorkflowOptions.newBuilder()
+            .setTaskQueue("child-workflow-task-queue")
+            .setWorkflowId("child-workflow-task-queue-01")
+            .setParentClosePolicy(ParentClosePolicy.PARENT_CLOSE_POLICY_ABANDON)
+            .build();
     EditingWorkflow editingWorkflow =
-            Workflow.newChildWorkflowStub(EditingWorkflow.class, childOptions);
+        Workflow.newChildWorkflowStub(EditingWorkflow.class, childOptions);
     logger.info("I am starting the child workflow");
 
     Async.procedure(editingWorkflow::startChildWorkflow, document);
@@ -40,6 +37,7 @@ public class PublishingWorkflowImpl implements PublishingWorkflow {
     childExecution.get();
     // TODO Terminate the child workflow
   }
+
   @Override
   public void publish(Document document) {
     logger.info("I am publishing: " + document.getUrl() + " in the main workflow");

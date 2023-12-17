@@ -1,5 +1,6 @@
 package publishingdemo;
 
+import io.temporal.api.common.v1.WorkflowExecution;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.common.RetryOptions;
@@ -9,6 +10,7 @@ import io.temporal.worker.WorkerFactory;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import publishingdemo.model.Document;
@@ -20,6 +22,17 @@ public class App {
 
   @SuppressWarnings("CatchAndPrintStackTrace")
   public static void main(String[] args) throws MalformedURLException, InterruptedException {
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter the URL of the document that needs editing: ");
+    String strUrl = scanner.nextLine();
+    System.out.println("URL entered: " + strUrl);
+    scanner.close();
+
+    // create an arbitrary document
+    URL url = new URL(strUrl);
+    Document document = new Document(url);
+
     WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
     // client that can be used to start and signal workflows
     WorkflowClient client = WorkflowClient.newInstance(service);
@@ -28,7 +41,7 @@ public class App {
     WorkerFactory factory = startWorkerWithFactory(client);
 
     // Declare the WORKFLOW_ID
-    String WORKFLOW_ID = TASK_QUEUE + "-" + "02";
+    String WORKFLOW_ID = document.getId().toString();
 
     // now we can start running instances of our workflow - its state will be persisted
     WorkflowOptions options =
@@ -43,25 +56,15 @@ public class App {
                     .build())
             .build();
 
-    PublishingWorkflow wf = client.newWorkflowStub(PublishingWorkflow.class, options);
+    PublicationWorkflow wf = client.newWorkflowStub(PublicationWorkflow.class, options);
     try {
 
-      URL url =
-          new URL("https://learn.temporal.io/getting_started/#set-up-your-development-environment");
-      Document document = new Document(url);
+      WorkflowExecution exec = WorkflowClient.start(wf::startWorkflow, document);
 
-      WorkflowClient.start(wf::startWorkflow);
-
-      wf.edit(document);
-      wf.publish(document);
-
-      wf.exit();
-
-    } catch (Exception e) {
+    } catch (Exception ex) {
       // Just rethrow for now
-      throw e;
+      throw ex;
     }
-    // logger.info("Nothing left to do, so the Executor will exit. That's all folks!");
   }
 
   /**
@@ -77,8 +80,8 @@ public class App {
     Worker worker = factory.newWorker(TASK_QUEUE);
 
     // Workflows are stateful. So you need a type to create instances.
-    worker.registerWorkflowImplementationTypes(
-        PublishingWorkflowImpl.class, EditingWorkflowImpl.class);
+    worker.registerWorkflowImplementationTypes(PublicationWorkflowImpl.class);
+    worker.registerActivitiesImplementations(new PublishingActivitiesImpl());
 
     // Start the worker created by this factory.
     factory.start();

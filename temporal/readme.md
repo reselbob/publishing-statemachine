@@ -54,7 +54,7 @@ Here is the command for starting the Temporal Server on a local Ubuntu machine. 
 window.
 
 ```bash
-temporal server start-dev
+temporal server start-dev --dynamic-config-value frontend.enableUpdateWorkflowExecution=true
 ```
 
 ---

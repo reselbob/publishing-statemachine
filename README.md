@@ -7,6 +7,6 @@ The differences in approach are illustrated in the diagram below:
 
 ![project-comparisons-01](https://github.com/reselbob/publishing-statemachine/assets/1110569/f6ed68aa-2fa3-489d-982c-1f29a19c67f6)
 
-The State Machine code is [here](./java).
+The State Machine code is [here](./statemachine).
 The Temporal Workflow code is [here](./temporal).
 

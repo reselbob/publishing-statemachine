@@ -1,5 +1,12 @@
-# publishing-statemachine
-A project that demonstrates a state machine for a document publishing process
+# Comparing a document publishing use case using a Statement Machine vs a Temporal workflow.
 
+The purose of this project is compare two approaches to implementing a document publishing use case. Once approach implements the use case as a State Machine written as Maven project programmed in Java.
+The other approach uses a Tremporal Workflow.
 
-![statemachine-02](https://github.com/reselbob/publishing-statemachine/assets/1110569/a44328bf-259a-4a74-8d9e-fbbd2d905a17)
+The differences in approach are illustrated in the diagram below:
+
+![project-comparisons-01](https://github.com/reselbob/publishing-statemachine/assets/1110569/f6ed68aa-2fa3-489d-982c-1f29a19c67f6)
+
+The State Machine code is [here](./java).
+The Temporal Workflow code is [here](./temporal).
+

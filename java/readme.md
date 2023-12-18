@@ -1,4 +1,4 @@
-# State Machine for Document Publication User Case
+# State Machine for Document Publication Use Case
 
 # Running the code:
 

@@ -1,4 +1,10 @@
 # State Machine for Document Publication Use Case
+he purpose of this project is to demonstrate how to implement a message driven state machine. This example is a Maven project.
+The code uses a simple message queue that ships with the project.
+
+The use case the statement machine implements is illustrated in the following diagram:
+
+![statemachine-02](https://github.com/reselbob/publishing-statemachine/assets/1110569/a44328bf-259a-4a74-8d9e-fbbd2d905a17)
 
 # Running the code:
 
@@ -20,7 +26,7 @@ openjdk 18.0.2-ea 2022-07-19
 OpenJDK Runtime Environment (build 18.0.2-ea+9-Ubuntu-222.04)
 OpenJDK 64-Bit Server VM (build 18.0.2-ea+9-Ubuntu-222.04, mixed mode, sharing)
 ```
-
+T
 Confirm that Maven is installed:
 
 ```bash

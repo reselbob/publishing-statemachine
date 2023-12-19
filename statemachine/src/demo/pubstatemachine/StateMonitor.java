@@ -1,9 +1,12 @@
 package demo.pubstatemachine;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
+/**
+ * This class is used to monitor the state of a document as it moves
+ * throw the various states toward completion of the publishing process.
+ */
 public class StateMonitor {
     private final Document document;
     private boolean isEditable;
@@ -17,7 +20,6 @@ public class StateMonitor {
 
     public StateMonitor(Document document) {
         this.document = document;
-
     }
 
     public Document getDocument() {
@@ -88,5 +90,4 @@ public class StateMonitor {
         }
         return null;
     }
-
 }

@@ -1,7 +1,6 @@
 package demo.pubstatemachine.state;
 
 import demo.pubstatemachine.message.AbstractMessage;
-import demo.pubstatemachine.message.MessageImpl;
 import demo.pubstatemachine.queue.SimpleMessageQueue;
 
 public abstract class AbstractState {

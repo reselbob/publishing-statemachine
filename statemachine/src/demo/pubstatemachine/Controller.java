@@ -1,13 +1,12 @@
 package demo.pubstatemachine;
 
 import demo.pubstatemachine.message.AbstractMessage;
-import demo.pubstatemachine.message.MessageImpl;
-import demo.pubstatemachine.message.MessageType;
 import demo.pubstatemachine.queue.SimpleMessageQueue;
 import demo.pubstatemachine.state.*;
+
 /**
  * The controller manages the state of the application based on the messages it receives.
- *
+ * <p>
  * The controller has a queue that it polls for messages built into the constructor. Messages
  * are processed within a switch statement based on the message type. The controller then
  * updates the state of the application based on the message type.
@@ -76,25 +75,25 @@ public class Controller {
 
     }
 
-
     private static void processEventPublishable(AbstractMessage message) throws InterruptedException {
         AbstractState.current = AbstractState.awaitingEdits;
         AbstractState.current.enter();
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
-        if(sm == null){
+        if (sm == null) {
             throw new NullPointerException("StateMonitor not found in processEventPublishable");
         }
         AbstractState.current.update(message);
     }
+
     private static void processEventEditable(AbstractMessage message) throws InterruptedException {
         AbstractState.current = AbstractState.editable;
         AbstractState.current.enter();
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
-        if(sm == null){
+        if (sm == null) {
             sm = new StateMonitor(message.getDocument());
             StateMonitor.addStateMonitor(sm);
         }
-        if(!sm.isEditable()){
+        if (!sm.isEditable()) {
             AbstractState.current.update(message);
         }
     }
@@ -103,10 +102,10 @@ public class Controller {
         AbstractState.current = AbstractState.graphicEdit;
         AbstractState.current.enter();
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
-        if(sm == null){
+        if (sm == null) {
             throw new NullPointerException("StateMonitor not found in processCommandGraphicEdit");
         }
-        if(!sm.isGraphicEdited()){
+        if (!sm.isGraphicEdited()) {
             AbstractState.current.update(message);
             sm.setGraphicEdited(true);
         }
@@ -116,10 +115,10 @@ public class Controller {
         AbstractState.current = AbstractState.copyEdit;
         AbstractState.current.enter();
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
-        if(sm == null){
+        if (sm == null) {
             throw new NullPointerException("StateMonitor not found in processCommandGraphicEdit");
         }
-        if(!sm.isCopyEdited()){
+        if (!sm.isCopyEdited()) {
             AbstractState.current.update(message);
         }
     }
@@ -128,7 +127,7 @@ public class Controller {
         AbstractState.current = AbstractState.awaitingEdits;
         AbstractState.current.enter();
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
-        if(sm == null){
+        if (sm == null) {
             throw new NullPointerException("StateMonitor not found in processEventAwaitEdits");
         }
         AbstractState.current.update(message);
@@ -138,12 +137,11 @@ public class Controller {
         AbstractState.current = AbstractState.publish;
         AbstractState.current.enter();
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
-        if(sm == null){
+        if (sm == null) {
             throw new NullPointerException("StateMonitor not found in processEventAwaitEdits");
         }
         AbstractState.current.update(message);
     }
-
 
     public void sendMessage(AbstractMessage message) {
         System.out.println("Sending message: " + message.getMessageType());

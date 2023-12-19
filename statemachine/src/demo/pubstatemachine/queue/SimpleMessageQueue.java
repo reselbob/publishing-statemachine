@@ -1,7 +1,12 @@
 package demo.pubstatemachine.queue;
-import demo.pubstatemachine.message.AbstractMessage;
 
+import demo.pubstatemachine.message.AbstractMessage;
 import java.util.concurrent.LinkedBlockingQueue;
+
+/**
+ * This class is the basic message queue that's used as the message
+ * transport for the state machine.
+ */
 public class SimpleMessageQueue {
 
     private final LinkedBlockingQueue<AbstractMessage> queue;

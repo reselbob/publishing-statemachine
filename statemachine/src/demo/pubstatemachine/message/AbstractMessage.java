@@ -2,7 +2,7 @@ package demo.pubstatemachine.message;
 
 import demo.pubstatemachine.Document;
 
-public abstract class AbstractMessage{
+public abstract class AbstractMessage {
     private final MessageType messageType;
     private final Document document;
 
@@ -10,8 +10,12 @@ public abstract class AbstractMessage{
         this.messageType = messageType;
         this.document = document;
     }
-    public MessageType getMessageType() { return messageType;}
-    public Document getDocument() { return document;}
 
+    public MessageType getMessageType() {
+        return messageType;
+    }
 
+    public Document getDocument() {
+        return document;
+    }
 }

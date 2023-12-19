@@ -28,6 +28,5 @@ public class Publish extends AbstractState{
             queue.putMessage(new MessageImpl(MessageType.EVENT_PUBLISHED, document));
             sm.setPublished(true);
         }
-
     }
 }

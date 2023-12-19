@@ -13,7 +13,6 @@ public class AwaitingPublish extends AbstractState{
     }
 
     public void update(AbstractMessage message){
-
         System.out.println(message.getMessageType());;
     }
 }

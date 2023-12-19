@@ -28,6 +28,5 @@ public class CopyEdit extends AbstractState{
             sm.setCopyEdited(true);
             queue.putMessage(new MessageImpl(MessageType.EVENT_AWAIT_GRAPHIC_EDIT, document));
         }
-
     }
 }

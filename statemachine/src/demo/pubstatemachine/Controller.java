@@ -5,7 +5,13 @@ import demo.pubstatemachine.message.MessageImpl;
 import demo.pubstatemachine.message.MessageType;
 import demo.pubstatemachine.queue.SimpleMessageQueue;
 import demo.pubstatemachine.state.*;
-
+/**
+ * The controller manages the state of the application based on the messages it receives.
+ *
+ * The controller has a queue that it polls for messages built into the constructor. Messages
+ * are processed within a switch statement based on the message type. The controller then
+ * updates the state of the application based on the message type.
+ */
 public class Controller {
 
     private final SimpleMessageQueue queue;

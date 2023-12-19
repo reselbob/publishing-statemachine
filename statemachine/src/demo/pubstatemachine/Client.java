@@ -7,6 +7,9 @@ import demo.pubstatemachine.message.MessageType;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * This is the client that sends a message to the controller thus starting the state machine.
+ */
 public class Client {
     public static void main(String[] args) throws InterruptedException, MalformedURLException {
         Controller controller = new Controller();

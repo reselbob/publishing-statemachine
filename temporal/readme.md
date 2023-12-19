@@ -77,38 +77,7 @@ mvn exec:java -Dexec.mainClass="publishingdemo.App"
 
 You'll see output similar to the following:
 
-```text
-Enter the TASK QUEUE name: 
-
-You did not enter a value for TASK QUEUE to we'll use the default value: PublishingDemo
-[publishingdemo.App.main()] INFO io.temporal.serviceclient.WorkflowServiceStubsImpl - Created WorkflowServiceStubs for channel: ManagedChannelOrphanWrapper{delegate=ManagedChannelImpl{logId=1, target=127.0.0.1:7233}}
-[publishingdemo.App.main()] INFO io.temporal.internal.worker.Poller - start: Poller{name=Workflow Poller taskQueue="PublishingDemo", namespace="default", identity=24476@bobs-mac-mini.lan}
-[publishingdemo.App.main()] INFO io.temporal.internal.worker.Poller - start: Poller{name=Activity Poller taskQueue="PublishingDemo", namespace="default", identity=24476@bobs-mac-mini.lan}
-[publishingdemo.App.main()] INFO publishingdemo.App - The worker has started and is listening on task queue: PublishingDemo.
-Enter 'exit' to exit or any other key to add a new Document URL: 
-https://www.temporal.io/
-Enter Document URL: 
-https://www.temporal.io/
-Enter 'exit' to exit or any other key to add a new Document URL: 
-[workflow-method-6a219ab8-794e-4e82-9897-9c44bad00b1b-9fa0343c-f153-499f-880f-b49f8e972112] INFO publishingdemo.PublicationWorkflowImpl - Starting Workflow for Publishing
-[Activity Executor taskQueue="PublishingDemo", namespace="default": 2] INFO publishingdemo.PublishingActivitiesImpl - I am Amazing AI. I have the smarts to Copy Edit the document id: 6a219ab8-794e-4e82-9897-9c44bad00b1b at URL https://www.temporal.io/. STARTING COPY EDIT NOW!
-[Activity Executor taskQueue="PublishingDemo", namespace="default": 1] INFO publishingdemo.PublishingActivitiesImpl - I am Amazing AI. I have the smarts to Graphic Edit the document id: 6a219ab8-794e-4e82-9897-9c44bad00b1b at URL https://www.temporal.io/. STARTING GRAPHIC EDIT NOW!
-[workflow-method-6a219ab8-794e-4e82-9897-9c44bad00b1b-9fa0343c-f153-499f-880f-b49f8e972112] INFO publishingdemo.PublicationWorkflowImpl - Copy edit complete
-[workflow-method-6a219ab8-794e-4e82-9897-9c44bad00b1b-9fa0343c-f153-499f-880f-b49f8e972112] INFO publishingdemo.PublicationWorkflowImpl - Graphic edit complete
-[Activity Executor taskQueue="PublishingDemo", namespace="default": 1] INFO publishingdemo.PublishingActivitiesImpl - I am Amazing AI. I have the smarts to Publish the document id: 6a219ab8-794e-4e82-9897-9c44bad00b1b at URL https://www.temporal.io/. STARTING PUBLISH NOW!
-[workflow-method-6a219ab8-794e-4e82-9897-9c44bad00b1b-9fa0343c-f153-499f-880f-b49f8e972112] INFO publishingdemo.PublicationWorkflowImpl - Publishing complete
-https://www.lacourt.org/
-Enter Document URL: 
-https://www.lacourt.org/
-Enter 'exit' to exit or any other key to add a new Document URL: 
-[workflow-method-55668a49-e23c-4765-baa5-fe4962b41fee-ed7f8507-b358-4411-a450-330b6f7db1dd] INFO publishingdemo.PublicationWorkflowImpl - Starting Workflow for Publishing
-[Activity Executor taskQueue="PublishingDemo", namespace="default": 3] INFO publishingdemo.PublishingActivitiesImpl - I am Amazing AI. I have the smarts to Copy Edit the document id: 55668a49-e23c-4765-baa5-fe4962b41fee at URL https://www.lacourt.org/. STARTING COPY EDIT NOW!
-[Activity Executor taskQueue="PublishingDemo", namespace="default": 4] INFO publishingdemo.PublishingActivitiesImpl - I am Amazing AI. I have the smarts to Graphic Edit the document id: 55668a49-e23c-4765-baa5-fe4962b41fee at URL https://www.lacourt.org/. STARTING GRAPHIC EDIT NOW!
-[workflow-method-55668a49-e23c-4765-baa5-fe4962b41fee-ed7f8507-b358-4411-a450-330b6f7db1dd] INFO publishingdemo.PublicationWorkflowImpl - Copy edit complete
-[workflow-method-55668a49-e23c-4765-baa5-fe4962b41fee-ed7f8507-b358-4411-a450-330b6f7db1dd] INFO publishingdemo.PublicationWorkflowImpl - Graphic edit complete
-[Activity Executor taskQueue="PublishingDemo", namespace="default": 3] INFO publishingdemo.PublishingActivitiesImpl - I am Amazing AI. I have the smarts to Publish the document id: 55668a49-e23c-4765-baa5-fe4962b41fee at URL https://www.lacourt.org/. STARTING PUBLISH NOW!
-[workflow-method-55668a49-e23c-4765-baa5-fe4962b41fee-ed7f8507-b358-4411-a450-330b6f7db1dd] INFO publishingdemo.PublicationWorkflowImpl - Publishing complete
-^C%                                                                                                                                                                                                                                                            reselbob@bobs-mac-mini temporal % mvn exec:java -Dexec.mainClass="publishingdemo.App"
+```text                                                                                                                                                                                                                                                           reselbob@bobs-mac-mini temporal % mvn exec:java -Dexec.mainClass="publishingdemo.App"
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] -------------------------< barryspeanuts:app >--------------------------

@@ -8,7 +8,7 @@ The workflow has three activities:
 - Graphic Edit
 - Publish
 
-The Copy Edit and Graphic Edit activities execute concurrently. Upon completion of both activites, the Publish activity executes as illustated in the figure below.
+The Copy Edit and Graphic Edit activities execute concurrently. Upon completion of both activities, the Publish activity executes as illustrated in the figure below.
 
 ![statemachine-03](https://github.com/reselbob/publishing-statemachine/assets/1110569/488b624d-c8fb-46bc-9e6b-85c0e9ebea2f)
 

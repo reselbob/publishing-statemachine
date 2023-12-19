@@ -1,5 +1,5 @@
 # State Machine for Document Publication Use Case
-he purpose of this project is to demonstrate how to implement a message driven state machine. This example is a Maven project.
+The purpose of this project is to demonstrate how to implement a message driven state machine. This example is a Maven project.
 The code uses a simple message queue that ships with the project.
 
 The use case the statement machine implements is illustrated in the following diagram:

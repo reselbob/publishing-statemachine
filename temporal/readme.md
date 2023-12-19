@@ -1,6 +1,14 @@
 # Implementing a Temporal Workflow for a Publishing Use Case using the Java SDK
 
-MORE TO COME
+The purpose of the project is to demonstrate how to implement a workflow under Temporal for a document publishing use case. The project uses the [Temporal Java SDK](https://docs.temporal.io/docs/java/introduction).
+
+The workflow has three activities:
+
+- CopyEdit
+- Graphic Edit
+- Publish
+
+The Copy Edit and Graphic Edit activities execute concurrently. Upon completion of both activites, the Publish activity executes as illustated in the figure below.
 
 
 # Running the code:

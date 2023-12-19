@@ -1,7 +1,7 @@
 # Comparing a document publishing use case using a Statement Machine vs a Temporal workflow.
 
-The purose of this project is compare two approaches to implementing a document publishing use case. Once approach implements the use case as a State Machine written as Maven project programmed in Java.
-The other approach uses a Tremporal Workflow.
+The purose of this project is compare two approaches to implementing a document publishing use case. One approach implements the use case as a State Machine written as Maven project programmed in Java.
+The other approach uses a Tremporal Workflow programmed using the [Temporal Java SDK API](https://www.javadoc.io/doc/io.temporal/temporal-sdk/latest/index.html).
 
 The differences in approach are illustrated in the diagram below:
 

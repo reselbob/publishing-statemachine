@@ -93,9 +93,10 @@ to `true`.
 
 The workflow then restarts the workflow. This time the `Publish` activity executes successfully. As shown in the screenshot of the Temporal Web UI below.
 
+![Screenshot 2023-12-19 at 5 51 07 PM](https://github.com/reselbob/publishing-statemachine/assets/1110569/d7f7d026-3068-4787-b100-baee12dedd71)
 
 
-```text                                                                                                                                                                                                                                                           reselbob@bobs-mac-mini temporal % mvn exec:java -Dexec.mainClass="publishingdemo.App"
+```text                                                                                                                                                                                $ mvn exec:java -Dexec.mainClass="publishingdemo.App"
 Enter the TASK QUEUE name: 
 
 You did not enter a value for TASK QUEUE to we'll use the default value: PublishingDemo

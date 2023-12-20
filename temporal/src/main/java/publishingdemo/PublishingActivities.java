@@ -14,4 +14,7 @@ public interface PublishingActivities {
 
   @ActivityMethod
   void publish(Document document);
+
+  @ActivityMethod
+  void compensate(String activityName, Document document);
 }

@@ -6,23 +6,36 @@ import publishingdemo.model.Document;
 
 public class PublishingActivitiesImpl implements PublishingActivities {
 
-  private static final Logger logger = Workflow.getLogger(PublishingActivitiesImpl.class);
-  private String str =
-      "I am Amazing AI. I have the smarts to %s the document id: %s at URL %s. STARTING %s NOW!";
+    private static boolean canPublishOnSunday = false;
 
-  @Override
-  public void copyEdit(Document document) {
-    logger.info(String.format(str, "Copy Edit", document.getId(), document.getUrl(), "COPY EDIT"));
-  }
+    private static final Logger logger = Workflow.getLogger(PublishingActivitiesImpl.class);
+    private final String str = "I am Amazing AI. I have the smarts to %s the document id: %s at URL %s. STARTING %s NOW!";
 
-  @Override
-  public void graphicEdit(Document document) {
-    logger.info(
-        String.format(str, "Graphic Edit", document.getId(), document.getUrl(), "GRAPHIC EDIT"));
-  }
+    @Override
+    public void copyEdit(Document document) {
+        logger.info(String.format(str, "Copy Edit", document.getId(), document.getUrl(), "COPY EDIT"));
+    }
 
-  @Override
-  public void publish(Document document) {
-    logger.info(String.format(str, "Publish", document.getId(), document.getUrl(), "PUBLISH"));
-  }
+    @Override
+    public void graphicEdit(Document document) {
+        logger.info(String.format(str, "Graphic Edit", document.getId(), document.getUrl(), "GRAPHIC EDIT"));
+    }
+
+    @Override
+    public void publish(Document document) {
+        if(!canPublishOnSunday) throw new RuntimeException("Cannot publish on Sunday");
+        logger.info(String.format(str, "Publish", document.getId(), document.getUrl(), "PUBLISH"));
+    }
+
+    /**
+     *
+     * @param activityName, the name of the activity to compensate
+     * @param document, the Document that the activity is affecting
+     */
+    @Override
+    public void compensate(String activityName, Document document) {
+        logger.info(String.format("Compensating %s for document id: %s at URL %s", activityName, document.getId(), document.getUrl()));
+        // Granted, compensation is  a bit terse here, but you get the idea.
+        if(activityName.equals("publish")) canPublishOnSunday = true;
+    }
 }

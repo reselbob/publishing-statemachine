@@ -43,6 +43,13 @@ public class PublicationWorkflowImpl implements PublicationWorkflow {
     this.activities = Workflow.newActivityStub(PublishingActivities.class, options);
   }
 
+  /**
+   * This method starts the workflow. Notice that the copyEdit, graphicEdit and publish activities
+   * are wrapped in a Temporal Saga. The Saga class provides the mechanism by which compensation behavior is
+   * invoked. Take a look at method, PublishingActivitiesImpl.compensate(String activityName, Document document)
+   * to see how the general compensation behavior is implemented.
+   * @param document, the Document to be processed
+   */
   @Override
   public void startWorkflow(Document document) {
     Saga saga = new Saga(new Saga.Options.Builder().setParallelCompensation(false).build());

@@ -28,7 +28,8 @@ public class PublishingActivitiesImpl implements PublishingActivities {
     }
 
     /**
-     *
+     *  This method is a one ring to rule them all. It is the compensation method for all activities.
+     *  It's intended for demonstration purposes only.
      * @param activityName, the name of the activity to compensate
      * @param document, the Document that the activity is affecting
      */

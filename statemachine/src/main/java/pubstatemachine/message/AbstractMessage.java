@@ -1,6 +1,6 @@
-package demo.pubstatemachine.message;
+package pubstatemachine.message;
 
-import demo.pubstatemachine.Document;
+import pubstatemachine.Document;
 
 public abstract class AbstractMessage {
     private final MessageType messageType;

@@ -1,7 +1,7 @@
-package demo.pubstatemachine.state;
+package pubstatemachine.state;
 
-import demo.pubstatemachine.message.AbstractMessage;
-import demo.pubstatemachine.queue.SimpleMessageQueue;
+import pubstatemachine.message.AbstractMessage;
+import pubstatemachine.queue.SimpleMessageQueue;
 
 public class AwaitingPublish extends AbstractState{
     public AwaitingPublish(SimpleMessageQueue queue) {

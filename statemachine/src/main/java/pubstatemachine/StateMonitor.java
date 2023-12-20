@@ -1,4 +1,4 @@
-package demo.pubstatemachine;
+package pubstatemachine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,6 @@ public class StateMonitor {
     private boolean isEditable;
     private boolean isCopyEdited;
     private boolean isGraphicEdited;
-    private boolean isProofRead;
     private boolean isPublishable;
     private boolean isPublished;
 

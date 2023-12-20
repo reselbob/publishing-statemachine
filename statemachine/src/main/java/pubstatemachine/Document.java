@@ -1,4 +1,4 @@
-package demo.pubstatemachine;
+package pubstatemachine;
 
 import java.net.URL;
 import java.util.UUID;

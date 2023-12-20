@@ -1,6 +1,6 @@
-package demo.pubstatemachine.message;
+package pubstatemachine.message;
 
-import demo.pubstatemachine.Document;
+import pubstatemachine.Document;
 public class MessageImpl extends AbstractMessage {
     public MessageImpl(MessageType messageType, Document document) {
         super(messageType, document);

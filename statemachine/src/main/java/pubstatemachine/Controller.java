@@ -1,8 +1,8 @@
-package demo.pubstatemachine;
+package pubstatemachine;
 
-import demo.pubstatemachine.message.AbstractMessage;
-import demo.pubstatemachine.queue.SimpleMessageQueue;
-import demo.pubstatemachine.state.*;
+import pubstatemachine.message.AbstractMessage;
+import pubstatemachine.queue.SimpleMessageQueue;
+import pubstatemachine.state.*;
 
 /**
  * The controller manages the state of the application based on the messages it receives.

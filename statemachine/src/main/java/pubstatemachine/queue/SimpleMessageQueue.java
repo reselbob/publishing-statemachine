@@ -1,6 +1,6 @@
-package demo.pubstatemachine.queue;
+package pubstatemachine.queue;
 
-import demo.pubstatemachine.message.AbstractMessage;
+import pubstatemachine.message.AbstractMessage;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**

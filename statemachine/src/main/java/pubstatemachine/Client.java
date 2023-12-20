@@ -1,8 +1,8 @@
-package demo.pubstatemachine;
+package pubstatemachine;
 
-import demo.pubstatemachine.message.AbstractMessage;
-import demo.pubstatemachine.message.MessageImpl;
-import demo.pubstatemachine.message.MessageType;
+import pubstatemachine.message.AbstractMessage;
+import pubstatemachine.message.MessageImpl;
+import pubstatemachine.message.MessageType;
 
 import java.net.MalformedURLException;
 import java.net.URL;

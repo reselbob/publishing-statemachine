@@ -1,4 +1,4 @@
-package demo.pubstatemachine.message;
+package pubstatemachine.message;
 
 public enum  MessageType {
     COMMAND_GRAPHIC_EDIT,

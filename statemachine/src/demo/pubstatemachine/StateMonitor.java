@@ -6,6 +6,8 @@ import java.util.List;
 /**
  * This class is used to monitor the state of a document as it moves
  * throw the various states toward completion of the publishing process.
+ *
+ * It's used by the state machine to ensure that an event or command is processed only once.
  */
 public class StateMonitor {
     private final Document document;
@@ -48,14 +50,6 @@ public class StateMonitor {
 
     public void setGraphicEdited(boolean graphicEdited) {
         isGraphicEdited = graphicEdited;
-    }
-
-    public boolean isProofRead() {
-        return isProofRead;
-    }
-
-    public void setProofRead(boolean proofRead) {
-        isProofRead = proofRead;
     }
 
     public boolean isPublishable() {

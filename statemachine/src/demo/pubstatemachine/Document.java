@@ -3,6 +3,9 @@ package demo.pubstatemachine;
 import java.net.URL;
 import java.util.UUID;
 
+/**
+ * This class represents a document that will be published.
+ */
 public class Document {
     private URL url;
     private UUID id;

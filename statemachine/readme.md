@@ -4,7 +4,7 @@ The code uses a simple message queue that ships with the project.
 
 The use case the statement machine implements is illustrated in the following diagram:
 
-![statemachine-02](https://github.com/reselbob/publishing-statemachine/assets/1110569/a44328bf-259a-4a74-8d9e-fbbd2d905a17)
+![statemachine-02](https://github.com/reselbob/publishing-workflow/assets/1110569/ae0556bf-c8dd-40fa-a1a9-d136c94843f5)
 
 # Running the code:
 

@@ -24,6 +24,10 @@ public class Editable extends AbstractState {
         queue.putMessage(new MessageImpl(MessageType.COMMAND_GRAPHIC_EDIT, document));
         queue.putMessage(new MessageImpl(MessageType.COMMAND_COPY_EDIT, document));
         StateMonitor sm = StateMonitor.getStateMonitor(message.getDocument());
+        // Make sure there is a StateMonitor for this document. The StateMonitor will
+        // is the mechanism for tracking the various states the document
+        // has pass through in the of the document as it moves through the publication
+        // process.
         if(sm == null) {
             throw new NullPointerException(String.format("No State Monitor found in %s for update()",this.getClass().getSimpleName()));
         }
